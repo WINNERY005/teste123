@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXT-PLAY Discord</title>
+  <link rel="icon" href="next play.gif" type="image/x-icon">
+  <!-- Alternative formats -->
+  <link rel="icon" href="next play.gif" type="image/png">
+  
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #000000;
+      color: #ffffff;
+    }
+
+    /* Navigation Bar */
+    nav {
+      width: 100%;
+      background: #111111;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    nav ul li a:hover {
+      background: #bbbbbb;
+      color: #000000;
+      transform: scale(1.05);
+    }
+
+    /* Header Section */
+    header {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      background: #000000;
+      padding-top: 80px; /* To offset the fixed navbar */
+      overflow: hidden;
+      position: relative;
+    }
+
+    .logo-circle {
+      width: 150px; /* Larger circle size */
+      height: 150px; /* Larger circle size */
+      border-radius: 50%;
+      background: #000000; /* Black circle */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      animation: moveAndRotate 5s infinite ease-in-out;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    }
+
+    .logo-circle img {
+      width: 80px; /* Adjust logo size to fit within the larger circle */
+    }
+
+    @keyframes moveAndRotate {
+      0% {
+        transform: translate(-50px, -50px) rotate(0deg);
+      }
+      25% {
+        transform: translate(100px, -100px) rotate(90deg);
+      }
+      50% {
+        transform: translate(100px, 100px) rotate(180deg);
+      }
+      75% {
+        transform: translate(-100px, 100px) rotate(270deg);
+      }
+      100% {
+        transform: translate(-50px, -50px) rotate(360deg);
+      }
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-top: 20px;
+      color: #ffffff;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      color: #bbbbbb;
+    }
+
+    header a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 15px 30px;
+      background: #ffffff;
+      color: #000000;
+      font-size: 1.2rem;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    header a:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    }
+
+    /* Section Styling */
+    section {
+      padding: 60px 20px;
+      text-align: center;
+      background: #111111;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #ffffff;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    section p {
+      font-size: 1.2rem;
+      color: #cccccc;
+      line-height: 1.6;
+    }
+
+    /* About Us Section */
+    #about {
+      padding: 60px 20px;
+      text-align: center;
+      background: #111111; /* Dark black background */
+      color: #ffffff; /* White text */
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    #about h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #ffffff;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    #about p {
+      font-size: 1.2rem;
+      color: #cccccc;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    #about .features-list {
+      list-style-type: none;
+      padding-left: 0;
+      text-align: left;
+      margin: 0 auto;
+      max-width: 600px;
+    }
+
+    #about .features-list li {
+      font-size: 1.1rem;
+      color: #ffffff;
+      margin: 10px 0;
+      padding: 5px;
+      background: #333333;
+      border-radius: 8px;
+      transition: background 0.3s ease-in-out;
+    }
+
+    #about .features-list li:hover {
+      background: #555555;
+    }
+
+    #about .features-list li strong {
+      font-weight: bold;
+    }
+
+    #about p:last-of-type {
+      font-size: 1.5rem;
+      color: #ffffff;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    /* Features Section */
+    #features {
+      padding: 60px 20px;
+      text-align: center;
+      background: #111111;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    #features h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      color: #ffffff;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .features-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .feature-item {
+      background: #222222;
+      padding: 20px;
+      border-radius: 8px;
+      color: #ffffff;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .feature-item:hover {
+      background: #333333;
+      transform: scale(1.05);
+    }
+
+    .feature-item h3 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    .feature-item p {
+      font-size: 1.1rem;
+      color: #cccccc;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .features-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111111;
+      color: #bbbbbb;
+    }
+
+    footer a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Social Icons */
+    .social-icons {
+      margin-top: 20px;
+    }
+
+    .social-icons a {
+      margin: 0 10px;
+      font-size: 2rem;
+      color: #ffffff;
+      transition: transform 0.3s, color 0.3s, box-shadow 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #1DA1F2; /* Light blue for Instagram */
+      transform: scale(1.2);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    }
+
+    /* Specific styling for Instagram */
+    .social-icons a.instagram:hover {
+      color: #E4405F; /* Instagram's signature pinkish-red color */
+      transform: scale(1.15);
+      box-shadow: 0 0 20px rgba(228, 64, 95, 0.5);
+    }
+
+    /* Specific styling for WhatsApp */
+    .social-icons a.whatsapp:hover {
+      color: #25D366; /* WhatsApp's signature green color */
+      transform: scale(1.15);
+      box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+    }
+
+    .social-icons a img {
+      width: 40px;  /* Adjust size of the logo */
+      height: 40px; /* Adjust size of the logo */
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .social-icons a:hover img {
+      transform: rotate(15deg);  /* Add rotation on hover */
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.6); /* Subtle glow effect */
+    }
+    
+
+
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <img src="next play.gif" alt="NEXT-PLAY Logo">
+      <span>NEXT-PLAY</span>
+    </div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#join">Join</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <div class="logo-circle">
+      <img src="next play.gif" alt="NEXT-PLAY Logo">
+    </div>
+    <h1>Welcome to NEXT-PLAY</h1>
+    <p>Join the ultimate gaming community today!</p>
+    <a href="https://discord.gg/vdBnHqn5" target="_blank">Join Now</a>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>About Us</h2>
+      <p>Welcome to <strong>NEXT-PLAY</strong>, the ultimate space for gamers to unwind, connect, and enjoy their favorite games in a relaxed and fun environment. Whether you're looking to team up for multiplayer action, explore new games, or just chat about everything gaming, we've got you covered.</p>
+      <p>Here, it's all about good vibes, friendly competition, and making lasting friendships. Join us for:</p>
+      <ul class="features-list">
+        <li>🎮 Casual game nights with fellow gamers</li>
+        <li>💬 Chill discussions about your favorite games, movies, and more</li>
+        <li>🏆 Regular events and tournaments to challenge your skills</li>
+        <li>🤖 Custom bots to enhance your experience</li>
+      </ul>
+      <p>Come for the fun, stay for the community! 🎮✨</p>
+    </section>
+
+    <section id="features">
+      <h2>Features</h2>
+      <div class="features-container">
+        <div class="feature-item">
+          <h3>🎮 Gaming Events</h3>
+          <p>Join us for exciting and fun gaming events, tournaments, and casual game nights.</p>
+        </div>
+        <div class="feature-item">
+          <h3>💬 Chill Community</h3>
+          <p>Our community is friendly and welcoming—come chat and make new friends!</p>
+        </div>
+        <div class="feature-item">
+          <h3>🤖 Custom Bots</h3>
+          <p>Our server features custom bots to enhance your experience and keep things fun.</p>
+        </div>
+        <div class="feature-item">
+          <h3>🏆 Memorable Experiences</h3>
+          <p>From game nights to events, we create lasting memories with every moment.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="join">
+      <h2>Join Now</h2>
+      <p>Ready to become part of NEXT-PLAY? Click the button above to join our amazing Discord server and start your journey!</p>
+    </section>
+
+ 
+
+  </main>
+
+  <footer>
+    <p>&copy; 2024 NEXT-PLAY Discord Community. All rights reserved. | <a href="https://www.instagram.com/m.hasbaoui/" target="_blank">Contact Us</a></p>
+  </footer>
+</body>
+</html>
